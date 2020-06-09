@@ -1,0 +1,41 @@
+.contact {
+  color: #43c59e;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  height: 55px;
+  min-width: 105px;
+}
+
+.rsIcon {
+  cursor: pointer;
+  --animate-duration: 0.3s;
+}
+
+.rsIcon + .rsIcon {
+  margin-left: 10px;
+}
+
+#contactText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 0.3s;
+  padding: 0 20px 0 20px;
+  cursor: pointer;
+  --animate-duration: 0.3s;
+}
+
+#mailIcon {
+  --animate-delay: 0.2s;
+}
+
+#ldIcon {
+  --animate-delay: 0.4s;
+}
+
+#gitIcon {
+  --animate-delay: 0.6s;
+}

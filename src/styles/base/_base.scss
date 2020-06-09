@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Encode Sans", sans-serif;
+  font-size: $m-size;
+  color: $dark-grey;
+  line-height: 1.6;
+  background: url("/images/4450358-dark-backgrounds.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  z-index: -100;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+.is-active {
+  font-weight: bold;
+}
