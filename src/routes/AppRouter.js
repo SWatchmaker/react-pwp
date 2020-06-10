@@ -11,26 +11,48 @@ import PublicRoute from "./PublicRoute";
 
 export const history = createHistory();
 
-const AppRouter = () => {
+class AppRouter extends React.Component {
   // let [scrollY, setScrollY] = useState(0);
 
-  return (
-    <Router history={history}>
-      <div>
-        <Header />
-        <Switch>
-          <PublicRoute path="/" component={Login} exact={true} />
-          <PrivateRoute
-            path="/dashboard"
-            component={HomePage}
-            exact
-            scrollY={scrollY}
-          />
-          <Route component={NotFoundPage} />
-        </Switch>
-      </div>
-    </Router>
-  );
-};
+  constructor() {
+    super();
+    this.state = {
+      scrollY: 0,
+    };
+  }
+  componentDidMount() {
+    window.addEventListener("scroll", (event) => {
+      const scroll = window.scrollY;
+      if (Math.abs(scroll - this.state.scrollY) >= 20) {
+        this.setState(() => {
+          return {
+            scrollY: scroll,
+          };
+        });
+        console.log(scroll);
+      }
+    });
+  }
+
+  shouldComponentUpdate() {
+    return false;
+  }
+
+  render() {
+    return (
+      <Router history={history}>
+        <div>
+          <Header />
+          <Switch>
+            <PublicRoute path="/" component={Login} exact={true} />
+            <PrivateRoute path="/dashboard" component={HomePage} exact />
+            <Route component={NotFoundPage} />
+          </Switch>
+          <footer id="footer"></footer>
+        </div>
+      </Router>
+    );
+  }
+}
 
 export default AppRouter;

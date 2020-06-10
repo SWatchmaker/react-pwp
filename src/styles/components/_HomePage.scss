@@ -1,20 +1,34 @@
 @keyframes bgAnimIn1 {
   100% {
-    transform: skew(0deg, 10deg);
+    transform: skew(0deg, 6deg);
     opacity: 1;
   }
 }
 
 @keyframes bgAnimIn2 {
   100% {
+    transform: skew(0deg, -6deg);
+    opacity: 1;
+  }
+}
+
+@keyframes bgAnimIn1-1 {
+  100% {
     transform: skew(0deg, -10deg);
+    opacity: 1;
+  }
+}
+
+@keyframes bgAnimIn2-1 {
+  100% {
+    transform: skew(0deg, 10deg);
     opacity: 1;
   }
 }
 
 @keyframes bgAnimOut1 {
   0% {
-    transform: skew(0deg, 10deg);
+    transform: skew(0deg, 6deg);
     opacity: 1;
   }
   100% {
@@ -24,7 +38,7 @@
 }
 @keyframes bgAnimOut2 {
   0% {
-    transform: skew(0deg, -10deg);
+    transform: skew(0deg, -6deg);
     opacity: 1;
   }
   100% {
@@ -32,7 +46,10 @@
     opacity: 0;
   }
 }
-
+.bgContainer {
+  width: 100vw;
+  overflow: hidden;
+}
 .bgAnim1,
 .bgAnim2 {
   content: "";
@@ -40,17 +57,42 @@
   left: 0;
   right: 0;
   opacity: 0;
-  background: rgba($color: #43c59e, $alpha: 0.05);
+  background: rgba($color: $eva-purple, $alpha: 0.1);
   z-index: -99;
+  transition: all 0.5s;
+  overflow: hidden;
 }
 
 .bgAnim1 {
   animation: bgAnimIn1 1s forwards;
-  // animation-fill-mode: forwards;
 }
 .bgAnim2 {
   animation: bgAnimIn2 1s forwards;
-  // animation-fill-mode: forwards;
+}
+
+.bgAnim1-1,
+.bgAnim2-1 {
+  background: rgba($color: $turquesa, $alpha: 0.1);
+}
+.bgAnim1-1 {
+  animation: bgAnimIn1-1 1s forwards;
+  background: linear-gradient(
+    90deg,
+    rgba(#333333, 0.1) 0%,
+    rgba($turquesa, 0.1) 70%,
+    rgba($turquesa, 0.2) 100%
+  );
+  right: 50%;
+}
+.bgAnim2-1 {
+  animation: bgAnimIn2-1 1s forwards;
+  background: linear-gradient(
+    90deg,
+    rgba($turquesa, 0.2) 0%,
+    rgba($turquesa, 0.1) 70%,
+    rgba(#333333, 0.1) 100%
+  );
+  left: 50%;
 }
 
 .bgAnim1.bgAnimOut {
@@ -86,7 +128,7 @@
 .curvedLetter {
   transform-origin: 0 100%;
   font-family: "Bebas Neue", cursive;
-  color: #43c59e;
+  color: $turquesa;
   font-size: 2.2rem;
 }
 
@@ -123,16 +165,16 @@
   max-width: 70%;
   color: white;
 
-  span {
-    color: #43c59e;
-  }
   p {
     margin-bottom: none;
+  }
+  span {
+    font-weight: 500;
   }
 }
 
 .home__iconContainer {
-  color: #43c59e;
+  color: $turquesa;
   max-width: 50%;
   margin: 12rem auto 33rem auto;
   height: 300px;
@@ -178,23 +220,23 @@
     left: 0;
     right: 0;
     height: 3px;
-    background-color: #43c59e;
   }
 }
+
 .textIconBox__icon {
   position: absolute;
   bottom: 3rem;
 
   &:after {
     content: "";
-    opacity: 1;
+    opacity: 0.3;
     position: absolute;
     bottom: -3rem;
     left: 0;
     right: 0;
-    height: 3px;
-    background-color: #43c59e;
-    border-radius: 2px;
+    height: 10px;
+    border-radius: 50%;
+    filter: blur(5px);
   }
 }
 
@@ -209,12 +251,70 @@
 }
 
 .textIconBox__icon__svg {
-  fill: #43c59e;
   height: 12rem;
   width: 12rem;
 }
 
+footer {
+  height: 300px;
+  background: white;
+  display: none;
+}
+
+#motivationBox,
+#presentationBox {
+  .home__sectionTitle {
+    &:before,
+    &:after {
+      background-color: $turquesa;
+    }
+  }
+  .home__descText span,
+  svg {
+    color: $turquesa;
+  }
+  .textIconBox__icon__svg {
+    fill: $turquesa;
+    &:after {
+      background-color: $turquesa;
+    }
+  }
+}
+
+#findBox {
+  .home__sectionTitle {
+    &:before,
+    &:after {
+      background-color: $eva-purple-l;
+    }
+  }
+  .home__descText span,
+  svg {
+    color: $eva-purple-l;
+    g {
+      fill: $eva-purple-l;
+    }
+  }
+  .textIconBox__icon__svg {
+    fill: $eva-purple-l;
+    &:after {
+      background-color: $eva-purple-l;
+    }
+  }
+}
+
 @keyframes swinging {
+  0% {
+    top: 25px;
+  }
+  50% {
+    top: 10px;
+  }
+  100% {
+    top: 25px;
+  }
+}
+@keyframes swinging2 {
   0% {
     bottom: 25px;
   }
@@ -231,7 +331,7 @@
     position: fixed;
     bottom: 5px;
     left: 50%;
-    color: #43c59e;
-    animation: swinging 1s ease-in-out infinite;
+    animation: swinging2 1s ease-in-out infinite;
+    color: $turquesa;
   }
 }
