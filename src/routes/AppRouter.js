@@ -1,14 +1,14 @@
 import React from "react";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
 import { createBrowserHistory } from "history";
-import Login from "../components/Login";
+// import Login from "../components/Login";
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import HomePage from "../components/HomePage";
-import NotFoundPage from "../components/NotFoundPage";
-import PrivateRoute from "./PrivateRoute";
-import PublicRoute from "./PublicRoute";
+// import NotFoundPage from "../components/NotFoundPage";
+// import PrivateRoute from "./PrivateRoute";
+// import PublicRoute from "./PublicRoute";
 
 export const history = createBrowserHistory();
 
@@ -25,7 +25,6 @@ class AppRouter extends React.Component {
     window.addEventListener("scroll", () => {
       const scroll = window.scrollY;
       if (Math.abs(scroll - this.state.scrollY) >= 20) {
-        console.log(scroll);
         this.setState(() => {
           return {
             scrollY: scroll,

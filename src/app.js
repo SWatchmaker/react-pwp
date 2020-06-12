@@ -4,45 +4,47 @@ import "@fortawesome/fontawesome-free/js/fontawesome";
 import "@fortawesome/fontawesome-free/js/solid";
 import "@fortawesome/fontawesome-free/js/regular";
 import "@fortawesome/fontawesome-free/js/brands";
-import { Provider } from "react-redux";
-import AppRouter, { history } from "./routes/AppRouter";
-import configureStore from "./store/configureStore";
-import { login, logout } from "../src/actions/auth";
+// import { Provider } from "react-redux";
+import AppRouter from "./routes/AppRouter";
+// import configureStore from "./store/configureStore";
 import "normalize.css/normalize.css";
 import "./styles/styles.scss";
 import "react-dates/lib/css/_datepicker.css";
-import { firebase } from "./firebase/firebase";
-import Loader from "./components/Loader";
+// const store = configureStore();
 
-const store = configureStore();
+// const jsx = (
+//   <Provider store={store}>
+//     <AppRouter />
+//   </Provider>
+// );
 
 const jsx = (
-  <Provider store={store}>
+  <div>
     <AppRouter />
-  </Provider>
+  </div>
 );
 
-let hasRendered = false;
-const renderApp = () => {
-  if (!hasRendered) {
-    ReactDOM.render(jsx, document.getElementById("app"));
-    hasRendered = true;
-  }
-};
+// let hasRendered = false;
+// const renderApp = () => {
+//   if (!hasRendered) {
+//     ReactDOM.render(jsx, document.getElementById("app"));
+//     hasRendered = true;
+//   }
+// };
 
-ReactDOM.render(<Loader />, document.getElementById("app"));
+ReactDOM.render(jsx, document.getElementById("app"));
 
-firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    store.dispatch(login(user.uid));
-    renderApp();
+// firebase.auth().onAuthStateChanged((user) => {
+//   if (user) {
+//     store.dispatch(login(user.uid));
+//     renderApp();
 
-    if (history.location.pathname === "/") {
-      history.push("/home");
-    }
-  } else {
-    store.dispatch(logout());
-    renderApp();
-    history.push("/");
-  }
-});
+//     if (history.location.pathname === "/") {
+//       history.push("/home");
+//     }
+//   } else {
+//     store.dispatch(logout());
+//     renderApp();
+//     history.push("/");
+//   }
+// });

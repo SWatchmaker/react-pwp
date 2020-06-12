@@ -56,12 +56,14 @@ class RRSSBox extends React.Component {
             this.state.anim ? "animate__fadeInDown" : "animate__fadeOutRight"
           }`}
         >
-          <i
-            className="fab fa-whatsapp-square fa-2x"
-            style={{
-              color: "#25d366",
-            }}
-          ></i>
+          <a href="https://wa.link/io5hce" target="_blank">
+            <i
+              className="fab fa-whatsapp-square fa-2x"
+              style={{
+                color: "#25d366",
+              }}
+            ></i>
+          </a>
         </div>
         <div
           id="mailIcon"
@@ -70,12 +72,14 @@ class RRSSBox extends React.Component {
             this.state.anim ? "animate__fadeInDown" : "animate__fadeOutRight"
           }`}
         >
-          <i
-            className="fas fa-envelope-square fa-2x"
-            style={{
-              color: "#ea4335",
-            }}
-          ></i>
+          <a href="mailto:sebastian.weidmann.l@gmail.com" target="_blank">
+            <i
+              className="fas fa-envelope-square fa-2x"
+              style={{
+                color: "#ea4335",
+              }}
+            ></i>
+          </a>
         </div>
         <div
           id="ldIcon"
@@ -84,12 +88,14 @@ class RRSSBox extends React.Component {
             this.state.anim ? "animate__fadeInDown" : "animate__fadeOutRight"
           }`}
         >
-          <i
-            className="fab fa-linkedin fa-2x"
-            style={{
-              color: "#0077b5",
-            }}
-          ></i>
+          <a href="https://wa.link/io5hce" target="_blank">
+            <i
+              className="fab fa-linkedin fa-2x"
+              style={{
+                color: "#0077b5",
+              }}
+            ></i>
+          </a>
         </div>
         <div
           id="gitIcon"
@@ -98,12 +104,14 @@ class RRSSBox extends React.Component {
             this.state.anim ? "animate__fadeInDown" : "animate__fadeOutRight"
           }`}
         >
-          <i
-            className="rsIcon fab fa-github-square fa-2x"
-            style={{
-              color: "#6e5494",
-            }}
-          ></i>
+          <a href="https://github.com/SWatchmaker" target="_blank">
+            <i
+              className="rsIcon fab fa-github-square fa-2x"
+              style={{
+                color: "#6e5494",
+              }}
+            ></i>
+          </a>
         </div>
         <div
           id="contactText"

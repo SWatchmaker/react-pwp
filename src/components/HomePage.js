@@ -9,6 +9,8 @@ class HomePage extends React.Component {
       bg1Top: 0,
       bg1Height: 0,
       bgElement: "motivationBox",
+      motivScroll: 2000,
+      findScroll: 2000,
     };
   }
   componentDidMount() {
@@ -45,12 +47,18 @@ class HomePage extends React.Component {
         scrollY: this.props.scrollY,
       };
     });
-    if (this.props.scrollY <= 900 && this.state.bgElement != "motivationBox") {
+    if (
+      this.props.scrollY <= this.state.findScroll &&
+      this.state.bgElement != "motivationBox"
+    ) {
       this.bg1Change("motivationBox");
       this.setState(() => {
         return { bgElement: "motivationBox" };
       });
-    } else if (this.props.scrollY > 900 && this.state.bgElement != "findBox") {
+    } else if (
+      this.props.scrollY > this.state.findScroll &&
+      this.state.bgElement != "findBox"
+    ) {
       this.bg1Change("findBox");
       this.setState(() => {
         return { bgElement: "findBox" };
@@ -70,6 +78,20 @@ class HomePage extends React.Component {
         };
       });
     }
+
+    this.scrollAdjust();
+  }
+
+  scrollAdjust() {
+    const motivScroll =
+      document.getElementById("motivationBox").offsetTop - 500;
+    const findScroll = document.getElementById("findBox").offsetTop - 500;
+    this.setState(() => {
+      return {
+        motivScroll,
+        findScroll,
+      };
+    });
   }
 
   circularText = (txt, radius, classIndex) => {
@@ -105,21 +127,25 @@ class HomePage extends React.Component {
           <div className="bgContainer">
             <div
               className={`bgAnim1 ${
-                this.state.scrollY > 180 ? "bgAnimIn" : "bgAnimOut"
-              } ${this.state.scrollY > 900 && "bgAnim1-1"}`}
+                this.state.scrollY > this.state.motivScroll
+                  ? "bgAnimIn"
+                  : "bgAnimOut"
+              } ${this.state.scrollY > this.state.findScroll && "bgAnim1-1"}`}
               style={{ top: this.state.bg1Top, height: this.state.bg1Height }}
             ></div>
             <div
               className={`bgAnim2 ${
-                this.state.scrollY > 180 ? "bgAnimIn" : "bgAnimOut"
-              } ${this.state.scrollY > 900 && "bgAnim2-1"}`}
+                this.state.scrollY > this.state.motivScroll
+                  ? "bgAnimIn"
+                  : "bgAnimOut"
+              } ${this.state.scrollY > this.state.findScroll && "bgAnim2-1"}`}
               style={{ top: this.state.bg1Top, height: this.state.bg1Height }}
             ></div>
           </div>
           <div className="home__content">
             <div
               className={`home__picture animate__animated ${
-                this.state.scrollY <= 180
+                this.state.scrollY <= this.state.motivScroll
                   ? "animate__fadeIn"
                   : "animate__fadeOutUp"
               }`}
@@ -156,7 +182,7 @@ class HomePage extends React.Component {
                 <div id="presentationBox">
                   <div
                     className={`home__textContainer animate__animated ${
-                      this.state.scrollY <= 180
+                      this.state.scrollY <= this.state.motivScroll
                         ? "animate__fadeIn"
                         : "animate__fadeOut"
                     }`}
@@ -164,7 +190,7 @@ class HomePage extends React.Component {
                   >
                     <p
                       className={`home__descText animate__animated ${
-                        this.state.scrollY <= 180
+                        this.state.scrollY <= this.state.motivScroll
                           ? "animate__fadeInLeft"
                           : "animate__fadeOutUp"
                       }`}
@@ -174,7 +200,7 @@ class HomePage extends React.Component {
                     </p>
                     <p
                       className={`home__descText--mini animate__animated ${
-                        this.state.scrollY <= 180
+                        this.state.scrollY <= this.state.motivScroll
                           ? "animate__fadeInRight"
                           : "animate__fadeOutUp"
                       }`}
@@ -189,7 +215,8 @@ class HomePage extends React.Component {
                 <div className="textIconBox" id="motivationBox">
                   <div
                     className={`textIconBox__text home__textContainer--left animate__animated ${
-                      this.state.scrollY > 180 && this.state.scrollY <= 900
+                      this.state.scrollY > this.state.motivScroll &&
+                      this.state.scrollY <= this.state.findScroll
                         ? "animate__fadeIn"
                         : "animate__fadeOut"
                     }`}
@@ -197,7 +224,8 @@ class HomePage extends React.Component {
                     <span className={`home__sectionTitle`}>Motivación</span>
                     <p
                       className={`home__descText animate__animated ${
-                        this.state.scrollY > 180 && this.state.scrollY <= 900
+                        this.state.scrollY > this.state.motivScroll &&
+                        this.state.scrollY <= this.state.findScroll
                           ? "animate__fadeInLeft"
                           : "animate__fadeOutRight"
                       }`}
@@ -208,7 +236,8 @@ class HomePage extends React.Component {
                     </p>
                     <p
                       className={`home__descText--mini animate__animated ${
-                        this.state.scrollY > 180 && this.state.scrollY <= 900
+                        this.state.scrollY > this.state.motivScroll &&
+                        this.state.scrollY <= this.state.findScroll
                           ? "animate__fadeInRight"
                           : "animate__fadeOutLeft"
                       }`}
@@ -221,7 +250,8 @@ class HomePage extends React.Component {
                   </div>
                   <div
                     className={`textIconBox__icon--right animate__animated ${
-                      this.state.scrollY > 180 && this.state.scrollY <= 900
+                      this.state.scrollY > this.state.motivScroll &&
+                      this.state.scrollY <= this.state.findScroll
                         ? "animate__fadeIn animate__slower"
                         : "animate__fadeOut"
                     }`}
@@ -246,7 +276,7 @@ class HomePage extends React.Component {
                 <div className="textIconBox" id="findBox">
                   <div
                     className={`textIconBox__text home__textContainer--right animate__animated ${
-                      this.state.scrollY > 900
+                      this.state.scrollY > this.state.findScroll
                         ? "animate__fadeIn"
                         : "animate__fadeOut"
                     }`}
@@ -255,7 +285,7 @@ class HomePage extends React.Component {
                     <span className={`home__sectionTitle`}>Qué busco</span>
                     <p
                       className={`home__descText animate__animated ${
-                        this.state.scrollY > 900
+                        this.state.scrollY > this.state.findScroll
                           ? "animate__fadeInRight"
                           : "animate__fadeOutLeft"
                       }`}
@@ -265,7 +295,7 @@ class HomePage extends React.Component {
                     </p>
                     <p
                       className={`home__descText--mini animate__animated ${
-                        this.state.scrollY > 900
+                        this.state.scrollY > this.state.findScroll
                           ? "animate__fadeInLeft"
                           : "animate__fadeOutRight"
                       }`}
@@ -278,7 +308,7 @@ class HomePage extends React.Component {
                   </div>
                   <div
                     className={`textIconBox__icon--left animate__animated ${
-                      this.state.scrollY > 900
+                      this.state.scrollY > this.state.findScroll
                         ? "animate__fadeIn animate__slower"
                         : "animate__fadeOut"
                     }`}

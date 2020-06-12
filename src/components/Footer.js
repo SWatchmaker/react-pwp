@@ -6,7 +6,10 @@ const Footer = (props) => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    if (props.scrollY > 1400) {
+    if (
+      window.innerHeight + window.scrollY >= document.body.offsetHeight - 100 &&
+      props.scrollY > 500
+    ) {
       setShow(true);
       if (!loadInit) {
         setLoadInit(true);
@@ -123,8 +126,69 @@ const Footer = (props) => {
                   show ? "animate__fadeInRight" : "animate__fadeOutLeft"
                 }`}
               >
-                PARA CONVERSAR EN PARTIDA
+                REDES INFORMALES
               </span>
+              <div className="footer__data">
+                <a
+                  href="https://www.instagram.com/xoclomaster/"
+                  target="_blank"
+                  className={`animate__animated ${
+                    show ? "animate__fadeInRight" : "animate__fadeOutLeft"
+                  }`}
+                  style={{
+                    "--animate-delay": "0.4s",
+                  }}
+                >
+                  <i
+                    className="fab fa-instagram-square"
+                    style={{
+                      color: "#c13584",
+                    }}
+                  ></i>
+                  <span>Instagram</span>
+                </a>
+              </div>
+              <div className="footer__data">
+                <a
+                  href="https://www.facebook.com/SW.Watchmaker/"
+                  target="_blank"
+                  className={`animate__animated ${
+                    show ? "animate__fadeInRight" : "animate__fadeOutLeft"
+                  }`}
+                  style={{
+                    "--animate-delay": "0.4s",
+                  }}
+                >
+                  <i
+                    className="fab fa-facebook"
+                    style={{
+                      color: "#3b5998",
+                    }}
+                  ></i>
+                  <span>Facebook</span>
+                </a>
+              </div>
+              <div className="footer__data">
+                <a
+                  href="https://twitter.com/sawlrock"
+                  target="_blank"
+                  className={`animate__animated ${
+                    show ? "animate__fadeInRight" : "animate__fadeOutLeft"
+                  }`}
+                  style={{
+                    "--animate-delay": "0.4s",
+                  }}
+                >
+                  <i
+                    className="fab fa-twitter"
+                    style={{
+                      color: "#1da1f2",
+                    }}
+                  ></i>
+                  <span>Twitter</span>
+                </a>
+              </div>
+
               <div className="footer__data">
                 <a
                   href="https://steamcommunity.com/id/SWatchmaker/"
