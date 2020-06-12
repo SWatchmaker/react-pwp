@@ -1,3 +1,7 @@
+#homePage {
+  margin-bottom: 30rem;
+}
+
 @keyframes bgAnimIn1 {
   100% {
     transform: skew(0deg, 6deg);
@@ -255,12 +259,6 @@
   width: 12rem;
 }
 
-footer {
-  height: 300px;
-  background: white;
-  display: none;
-}
-
 #motivationBox,
 #presentationBox {
   .home__sectionTitle {
@@ -333,5 +331,6 @@ footer {
     left: 50%;
     animation: swinging2 1s ease-in-out infinite;
     color: $turquesa;
+    z-index: 100;
   }
 }

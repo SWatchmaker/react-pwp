@@ -3,8 +3,13 @@
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: rgba(black, 0.4);
+  background-color: transparent;
+  transition: background-color 0.5s;
   z-index: 1000;
+}
+
+.header--bg {
+  background-color: rgba(black, 0.55);
 }
 
 .header__content {

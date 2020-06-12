@@ -1,8 +1,8 @@
 import React from "react";
 
 class HomePage extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       cLetters: [],
       scrollY: 0,
@@ -17,8 +17,6 @@ class HomePage extends React.Component {
       const height = img.offsetHeight;
       this.circularText("Software Developer", height / 2 + 30, 0);
       this.bg1Change(this.state.bgElement);
-      console.log(document.getElementById("footer"));
-      document.getElementById("footer").style.display = "block";
     });
 
     window.addEventListener("resize", () => {
@@ -31,48 +29,34 @@ class HomePage extends React.Component {
         });
       }
 
-      if (
-        this.props.scrollY <= 900 &&
-        this.state.bgElement != "motivationBox"
-      ) {
-        this.bg1Change("motivationBox");
-        this.setState(() => {
-          bgElement: "motivationBox";
-        });
-      } else if (
-        this.props.scrollY > 900 &&
-        this.state.bgElement != "findBox"
-      ) {
-        this.bg1Change("findBox");
-        this.setState(() => {
-          bgElement: "findBox";
-        });
-      }
-    });
-
-    window.addEventListener("scroll", (event) => {
-      const scroll = window.scrollY;
-      if (Math.abs(scroll - this.state.scrollY) >= 20) {
-        this.setState(() => {
-          return {
-            scrollY: scroll,
-          };
-        });
-        console.log(scroll);
-        if (scroll <= 900 && this.state.bgElement != "motivationBox") {
-          this.bg1Change("motivationBox");
-          this.setState(() => {
-            return { bgElement: "motivationBox" };
-          });
-        } else if (scroll > 900 && this.state.bgElement != "findBox") {
-          this.bg1Change("findBox");
-          this.setState(() => {
-            return { bgElement: "findBox" };
-          });
-        }
-      }
+      this.bg1Change(this.state.bgElement);
     });
   }
+
+  componentDidUpdate() {
+    if (this.props.scrollY != this.state.scrollY) {
+      this.onScrollChange();
+    }
+  }
+
+  onScrollChange = () => {
+    this.setState(() => {
+      return {
+        scrollY: this.props.scrollY,
+      };
+    });
+    if (this.props.scrollY <= 900 && this.state.bgElement != "motivationBox") {
+      this.bg1Change("motivationBox");
+      this.setState(() => {
+        return { bgElement: "motivationBox" };
+      });
+    } else if (this.props.scrollY > 900 && this.state.bgElement != "findBox") {
+      this.bg1Change("findBox");
+      this.setState(() => {
+        return { bgElement: "findBox" };
+      });
+    }
+  };
 
   bg1Change(elementId) {
     let bg1Top = document.getElementById(elementId).offsetTop - 150;
@@ -117,7 +101,7 @@ class HomePage extends React.Component {
   render() {
     return (
       <div>
-        <div className="content-container">
+        <div className="content-container" id="homePage">
           <div className="bgContainer">
             <div
               className={`bgAnim1 ${

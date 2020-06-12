@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 import AnimLogo from "./AnimLogo";
 import RRSSBox from "./RRSSBox";
 
-export const Header = ({ startLogout }) => (
-  <header className="header">
+export const Header = ({ startLogout, scrollY }) => (
+  <header className={`header ${scrollY > 20 && "header--bg"}`}>
     <div className="content-container">
       <div className="header__content">
         <AnimLogo />
