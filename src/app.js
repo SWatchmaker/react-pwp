@@ -9,7 +9,7 @@ import AppRouter from "./routes/AppRouter";
 // import configureStore from "./store/configureStore";
 import "normalize.css/normalize.css";
 import "./styles/styles.scss";
-import "react-dates/lib/css/_datepicker.css";
+import WelcomePage from "./components/WelcomePage";
 // const store = configureStore();
 
 // const jsx = (
@@ -32,7 +32,7 @@ const jsx = (
 //   }
 // };
 
-ReactDOM.render(jsx, document.getElementById("app"));
+ReactDOM.render(<WelcomePage />, document.getElementById("app"));
 
 // firebase.auth().onAuthStateChanged((user) => {
 //   if (user) {

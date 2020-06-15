@@ -84,8 +84,8 @@ class HomePage extends React.Component {
 
   scrollAdjust() {
     const motivScroll =
-      document.getElementById("motivationBox").offsetTop - 500;
-    const findScroll = document.getElementById("findBox").offsetTop - 500;
+      document.getElementById("motivationBox").offsetTop - 600;
+    const findScroll = document.getElementById("findBox").offsetTop - 600;
     this.setState(() => {
       return {
         motivScroll,

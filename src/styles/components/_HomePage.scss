@@ -1,5 +1,5 @@
 #homePage {
-  margin-bottom: 30rem;
+  margin-bottom: 20rem;
 }
 
 @keyframes bgAnimIn1 {
@@ -280,6 +280,9 @@
 }
 
 #findBox {
+  .textIconBox__text {
+    margin-bottom: 20rem;
+  }
   .home__sectionTitle {
     &:before,
     &:after {

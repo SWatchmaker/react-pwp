@@ -88,7 +88,7 @@ class RRSSBox extends React.Component {
             this.state.anim ? "animate__fadeInDown" : "animate__fadeOutRight"
           }`}
         >
-          <a href="https://wa.link/io5hce" target="_blank">
+          <a href="https://www.linkedin.com/in/sebaweidmann/" target="_blank">
             <i
               className="fab fa-linkedin fa-2x"
               style={{
