@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Loader from "./Loader";
 
-const Footer = (props) => {
+const Footer = props => {
   const [loadInit, setLoadInit] = useState(false);
   const [show, setShow] = useState(false);
 
@@ -43,17 +43,17 @@ const Footer = (props) => {
                 <a
                   href="https://www.linkedin.com/in/sebaweidmann/"
                   target="_blank"
-                  className={`animate__animated ${
+                  className={`animate__animated animate__delay-1s ${
                     show ? "animate__fadeInLeft" : "animate__fadeOutRight"
                   }`}
                   style={{
-                    "--animate-delay": "0.4s",
+                    "--animate-delay": "0.4s"
                   }}
                 >
                   <i
                     className="fab fa-linkedin-in"
                     style={{
-                      color: "#0077b5",
+                      color: "#0077b5"
                     }}
                   ></i>
                   <span>Conoce mi CV</span>
@@ -63,17 +63,17 @@ const Footer = (props) => {
                 <a
                   href="https://github.com/SWatchmaker"
                   target="_blank"
-                  className={`animate__animated ${
+                  className={`animate__animated animate__delay-1s ${
                     show ? "animate__fadeInLeft" : "animate__fadeOutRight"
                   }`}
                   style={{
-                    "--animate-delay": "0.8s",
+                    "--animate-delay": "0.8s"
                   }}
                 >
                   <i
                     className="fab fa-github"
                     style={{
-                      color: "#6e5494",
+                      color: "#6e5494"
                     }}
                   ></i>
                   <span>Mis experimentos</span>
@@ -83,17 +83,17 @@ const Footer = (props) => {
                 <a
                   href="mailto:sebastian.weidmann.l@gmail.com"
                   target="_blank"
-                  className={`animate__animated ${
+                  className={`animate__animated animate__delay-1s ${
                     show ? "animate__fadeInLeft" : "animate__fadeOutRight"
                   }`}
                   style={{
-                    "--animate-delay": "1.2s",
+                    "--animate-delay": "1.2s"
                   }}
                 >
                   <i
                     className="far fa-envelope"
                     style={{
-                      color: "#ea4335",
+                      color: "#ea4335"
                     }}
                   ></i>
                   <span>Escríbeme!</span>
@@ -103,17 +103,17 @@ const Footer = (props) => {
                 <a
                   href="https://wa.link/io5hce"
                   target="_blank"
-                  className={`animate__animated ${
+                  className={`animate__animated animate__delay-1s ${
                     show ? "animate__fadeInLeft" : "animate__fadeOutRight"
                   }`}
                   style={{
-                    "--animate-delay": "1.4s",
+                    "--animate-delay": "1.4s"
                   }}
                 >
                   <i
                     className="fab fa-whatsapp"
                     style={{
-                      color: "#25d366",
+                      color: "#25d366"
                     }}
                   ></i>
                   <span>Whatsapéame!</span>
@@ -132,17 +132,17 @@ const Footer = (props) => {
                 <a
                   href="https://www.instagram.com/xoclomaster/"
                   target="_blank"
-                  className={`animate__animated ${
+                  className={`animate__animated animate__delay-1s ${
                     show ? "animate__fadeInRight" : "animate__fadeOutLeft"
                   }`}
                   style={{
-                    "--animate-delay": "0.4s",
+                    "--animate-delay": "0.4s"
                   }}
                 >
                   <i
                     className="fab fa-instagram-square"
                     style={{
-                      color: "#c13584",
+                      color: "#c13584"
                     }}
                   ></i>
                   <span>Instagram</span>
@@ -152,17 +152,17 @@ const Footer = (props) => {
                 <a
                   href="https://www.facebook.com/SW.Watchmaker/"
                   target="_blank"
-                  className={`animate__animated ${
+                  className={`animate__animated animate__delay-1s ${
                     show ? "animate__fadeInRight" : "animate__fadeOutLeft"
                   }`}
                   style={{
-                    "--animate-delay": "0.4s",
+                    "--animate-delay": "0.8s"
                   }}
                 >
                   <i
                     className="fab fa-facebook"
                     style={{
-                      color: "#3b5998",
+                      color: "#3b5998"
                     }}
                   ></i>
                   <span>Facebook</span>
@@ -172,17 +172,17 @@ const Footer = (props) => {
                 <a
                   href="https://twitter.com/sawlrock"
                   target="_blank"
-                  className={`animate__animated ${
+                  className={`animate__animated animate__delay-1s ${
                     show ? "animate__fadeInRight" : "animate__fadeOutLeft"
                   }`}
                   style={{
-                    "--animate-delay": "0.4s",
+                    "--animate-delay": "1.2s"
                   }}
                 >
                   <i
                     className="fab fa-twitter"
                     style={{
-                      color: "#1da1f2",
+                      color: "#1da1f2"
                     }}
                   ></i>
                   <span>Twitter</span>
@@ -193,17 +193,17 @@ const Footer = (props) => {
                 <a
                   href="https://steamcommunity.com/id/SWatchmaker/"
                   target="_blank"
-                  className={`animate__animated ${
+                  className={`animate__animated animate__delay-1s ${
                     show ? "animate__fadeInRight" : "animate__fadeOutLeft"
                   }`}
                   style={{
-                    "--animate-delay": "0.4s",
+                    "--animate-delay": "1.6s"
                   }}
                 >
                   <i
                     className="fab fa-steam"
                     style={{
-                      color: "#00adee",
+                      color: "#00adee"
                       //#C28F2C
                     }}
                   ></i>
