@@ -32,6 +32,7 @@
         margin-top: -20px;
         margin-left: -20px;
         z-index: 100;
+        transition: all 1s ease;
       }
     }
 
@@ -81,6 +82,7 @@
         border-radius: 50%;
         background-color: $turquesa;
         animation: particle_ 2s infinite linear;
+        transition: all 1s ease;
       }
     }
   }

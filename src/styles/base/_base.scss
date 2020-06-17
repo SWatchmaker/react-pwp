@@ -11,7 +11,7 @@ body {
   font-size: $m-size;
   color: $dark-grey;
   line-height: 1.6;
-  background: url("/images/4450358-dark-backgrounds.jpg");
+  background: darken($eva-purple, 22%);
   background-attachment: fixed;
   background-size: cover;
   z-index: -100;

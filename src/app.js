@@ -32,7 +32,7 @@ const jsx = (
 //   }
 // };
 
-ReactDOM.render(<WelcomePage />, document.getElementById("app"));
+ReactDOM.render(jsx, document.getElementById("app"));
 
 // firebase.auth().onAuthStateChanged((user) => {
 //   if (user) {

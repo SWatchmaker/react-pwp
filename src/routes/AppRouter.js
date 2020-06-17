@@ -5,6 +5,7 @@ import { createBrowserHistory } from "history";
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import WelcomePage from "../components/WelcomePage";
 import HomePage from "../components/HomePage";
 // import NotFoundPage from "../components/NotFoundPage";
 // import PrivateRoute from "./PrivateRoute";
@@ -13,12 +14,11 @@ import HomePage from "../components/HomePage";
 export const history = createBrowserHistory();
 
 class AppRouter extends React.Component {
-  // let [scrollY, setScrollY] = useState(0);
-
   constructor() {
     super();
     this.state = {
       scrollY: 0,
+      postWelcome: false,
     };
   }
   componentDidMount() {
@@ -34,22 +34,41 @@ class AppRouter extends React.Component {
     });
   }
 
+  setPostWelcome = () => {
+    this.setState(() => {
+      return {
+        postWelcome: true,
+      };
+    });
+  };
+
   render() {
     return (
       <Router history={history}>
         <div>
-          <Header scrollY={this.state.scrollY} />
+          {this.state.postWelcome && <Header scrollY={this.state.scrollY} />}
           <Switch>
             <Route
-              path="/home"
+              path="/welcome"
               render={(props) => (
-                <HomePage {...props} scrollY={this.state.scrollY} />
+                <WelcomePage {...props} setPost={this.setPostWelcome} />
               )}
               exact={true}
             />
-            <Redirect from="*" to="/home" />
+            {this.state.postWelcome && (
+              <Route
+                path="/home"
+                render={(props) => (
+                  <HomePage {...props} scrollY={this.state.scrollY} />
+                )}
+                exact={true}
+              />
+            )}
+            <Redirect from="*" to="/welcome" />
           </Switch>
-          <Footer scrollY={this.state.scrollY}></Footer>
+          {this.state.postWelcome && (
+            <Footer scrollY={this.state.scrollY}></Footer>
+          )}
         </div>
       </Router>
     );

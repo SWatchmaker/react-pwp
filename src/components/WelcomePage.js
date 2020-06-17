@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
+// import { useHistory } from "react-router-dom";
 import Loader from "../components/Loader";
 
-const WelcomPage = () => {
+const WelcomPage = (props) => {
   const rotDif = 220 / 5;
   const initialState = {
     top: 50,
@@ -9,7 +10,9 @@ const WelcomPage = () => {
     speed: 0.3,
     rotation: 0,
   };
+  const [enableButton, setEnableButton] = useState(false);
   const [circleAnim, setCircleAnim] = useState(true);
+  const [outAnim, setOutAnim] = useState(false);
   const [nodePosition, setNodePos] = useState({});
   const [htmlPosition, setHtmlPos] = useState({});
   const [reactPosition, setReactPos] = useState({});
@@ -17,14 +20,29 @@ const WelcomPage = () => {
 
   useEffect(() => {
     stopBounce();
+    var img = new Image();
+    img.onload = function () {
+      const body = document.getElementById("body");
+      body.style.background = `url("/images/4450358-dark-backgrounds.jpg")`;
+      body.style.backgroundAttachment = `fixed`;
+      body.style.backgroundSize = `cover`;
+      var img2 = new Image();
+      img2.onload = function () {
+        setEnableButton(true);
+      };
+      img2.src = "/images/78ec3e1d-d68f-455b-a9d0-bfdbadc14aa8.jpg";
+    };
+    img.src = "/images/4450358-dark-backgrounds.jpg";
   }, []);
 
   function startBounce() {
-    setNodePos(createPos(nodePosition));
-    setHtmlPos(createPos(htmlPosition));
-    setReactPos(createPos(reactPosition));
-    setCssPos(createPos(cssPosition));
-    setCircleAnim(false);
+    if (!outAnim) {
+      setNodePos(createPos(nodePosition));
+      setHtmlPos(createPos(htmlPosition));
+      setReactPos(createPos(reactPosition));
+      setCssPos(createPos(cssPosition));
+      setCircleAnim(false);
+    }
   }
 
   function stopBounce() {
@@ -92,11 +110,31 @@ const WelcomPage = () => {
     return pos;
   }
 
+  function animOut() {
+    if (enableButton) {
+      setOutAnim(true);
+    }
+  }
+
+  function toHome() {
+    props.setPost();
+    props.history.push("/home");
+  }
+
   return (
-    <div className="welcomePage">
+    <div
+      className={`welcomePage ${!circleAnim && "loader--inactive"} ${
+        outAnim && "animate__animated animate__delay-1s animate__fadeOut"
+      }`}
+      style={{
+        "--animate-delay": "0.8s",
+      }}
+    >
       <div className="welcomePage__bounceContainer" id="bounceContainer">
         <div
-          className={`animate__animated animate__fadeIn animate__delay-1s ${
+          className={`animate__animated animate__delay-1s ${
+            outAnim ? "animate__fadeOutUp" : "animate__fadeIn"
+          } ${
             circleAnim
               ? "welcomePage__rollIcon--circle"
               : "welcomePage__rollIcon"
@@ -105,7 +143,7 @@ const WelcomPage = () => {
             top: `${nodePosition.top}%`,
             left: `${nodePosition.left}%`,
             transitionDuration: `${nodePosition.speed}s`,
-            "--animate-delay": `0.3s`,
+            "--animate-delay": outAnim ? "0s" : `0.3s`,
             transform: `rotate(${nodePosition.rotation}deg)`,
           }}
           onTransitionEnd={(e) => {
@@ -118,7 +156,9 @@ const WelcomPage = () => {
           <i className="fab fa-node-js fa-3x"></i>
         </div>
         <div
-          className={`animate__animated animate__fadeIn animate__delay-1s ${
+          className={`animate__animated animate__delay-1s ${
+            outAnim ? "animate__fadeOutUp" : "animate__fadeIn"
+          } ${
             circleAnim
               ? "welcomePage__rollIcon--circle"
               : "welcomePage__rollIcon"
@@ -127,7 +167,7 @@ const WelcomPage = () => {
             top: `${htmlPosition.top}%`,
             left: `${htmlPosition.left}%`,
             transition: `all ${htmlPosition.speed}s linear`,
-            "--animate-delay": `0.9s`,
+            "--animate-delay": outAnim ? "0.1s" : `0.9s`,
             transform: `rotate(${htmlPosition.rotation}deg)`,
           }}
           onTransitionEnd={(e) => {
@@ -140,7 +180,9 @@ const WelcomPage = () => {
           <i className="fab fa-html5 fa-3x"></i>
         </div>
         <div
-          className={`animate__animated animate__fadeIn animate__delay-1s ${
+          className={`animate__animated animate__delay-1s ${
+            outAnim ? "animate__fadeOutUp" : "animate__fadeIn"
+          } ${
             circleAnim
               ? "welcomePage__rollIcon--circle"
               : "welcomePage__rollIcon"
@@ -149,7 +191,7 @@ const WelcomPage = () => {
             top: `${reactPosition.top}%`,
             left: `${reactPosition.left}%`,
             transition: `all ${reactPosition.speed}s linear`,
-            "--animate-delay": `1.5s`,
+            "--animate-delay": outAnim ? "0.2s" : `1.5s`,
             transform: `rotate(${reactPosition.rotation}deg)`,
           }}
           onTransitionEnd={(e) => {
@@ -162,7 +204,9 @@ const WelcomPage = () => {
           <i className="fab fa-react fa-3x"></i>
         </div>
         <div
-          className={`animate__animated animate__fadeIn animate__delay-1s ${
+          className={`animate__animated animate__delay-1s ${
+            outAnim ? "animate__fadeOutUp" : "animate__fadeIn"
+          }  ${
             circleAnim
               ? "welcomePage__rollIcon--circle"
               : "welcomePage__rollIcon"
@@ -171,7 +215,7 @@ const WelcomPage = () => {
             top: `${cssPosition.top}%`,
             left: `${cssPosition.left}%`,
             transition: `all ${cssPosition.speed}s linear`,
-            "--animate-delay": `2.1s`,
+            "--animate-delay": outAnim ? "0.3s" : "2.1s",
             transform: `rotate(${cssPosition.rotation}deg)`,
           }}
           onTransitionEnd={(e) => {
@@ -191,12 +235,23 @@ const WelcomPage = () => {
       </div>
       <Loader />
       <div
-        className="welcomePage__inButton"
+        className={`welcomePage__inButton animate__animated animate__delay-1s ${
+          outAnim && "animate__fadeOutDown"
+        } ${!enableButton && "disabled"}`}
+        style={{
+          "--animate-delay": "0.6s",
+        }}
         onMouseEnter={() => {
           stopBounce();
         }}
         onMouseLeave={() => {
           startBounce();
+        }}
+        onClick={() => {
+          animOut();
+        }}
+        onAnimationEnd={() => {
+          toHome();
         }}
       >
         <span>Bienvenid@</span>
